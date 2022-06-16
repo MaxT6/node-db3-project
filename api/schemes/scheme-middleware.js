@@ -20,7 +20,7 @@ const checkSchemeId = async (req, res, next) => {
         message: `scheme with scheme_id ${req.params.scheme_id} not found`
       })
     } else {
-      next ()
+      next()
     }
   } catch (err) {
     next(err)
@@ -59,12 +59,12 @@ const validateScheme = (req, res, next) => {
 */
 const validateStep = (req, res, next) => {
   const { instructions, step_number } = req.body
-  
+  console.log("instructions", instructions, "step_number", step_number)
   if (
     instructions === undefined ||
     typeof instructions !== 'string' ||
     !instructions.trim() ||
-    typeof instructions !== 'number' ||
+    typeof step_number !== 'number' ||
     step_number < 1
     ) {
       const error = { status: 400, message: "invalid step"}
